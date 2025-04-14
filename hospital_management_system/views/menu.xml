@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="menu_hospital" name="HMS"/>  #main menu
+    <menuitem id="menu_hospital_patient" name="Patient" action="action_hospital_patient" parent="menu_hospital" sequence="2"/> #menu
+    <menuitem id="menu_hospital_doctor" name="Doctor" action="action_hospital_doctor" parent="menu_hospital" sequence="1"/>  #menu
+                                                                                                #sequence helps what menu should come first
+</odoo>
