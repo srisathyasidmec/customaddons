@@ -17,15 +17,19 @@
                                 icon="fa-pencil-square-o"
                                 string="patient"/>
                     </div>
+                    <field name="image_1920" widget="image" class="oe_avatar"
+                           options="{&quot;preview_image&quot;: &quot;avatar_128&quot;}"/>
+
                     <group>
                         <group>
-                        <field name="patient_name"/>
-                        <field name="patient_email"/>
-                        <field name="age"/>
-                        <field name="address"/>
-                        <field name="gender"/>
-                        <field name="patient_doctor"/>
-                        <field name="patient_id"/>
+                            <field name="patient_name"/>
+                            <field name="patient_email"/>
+                            <field name="age"/>
+                            <field name="op_date"/>
+                            <field name="address"/>
+                            <field name="gender"/>
+                            <field name="patient_doctor"/>
+                            <field name="patient_id"/>
                             <field name="doctor_mail"/>
                         </group>
                         <group>
@@ -33,9 +37,9 @@
                             <field name="is_patient_is_discharged"/>
                             <field name="discharge_date" invisible="is_patient_is_discharged == False"/>
                         </group>
-<!--                        <group>-->
-<!--                            <field name="image" widget="image" class="oe_avatar" options="{'preview_image': 'image'}"/>-->
-<!--                        </group>-->
+                        <!--                        <group>-->
+                        <!--                            <field name="image" widget="image" class="oe_avatar" options="{'preview_image': 'image'}"/>-->
+                        <!--                        </group>-->
                     </group>
                     <notebook>
                         <page string="order lines">
@@ -78,15 +82,63 @@
                 <field name="gender"/>
                 <field name="patient_id"/>
                 <field name="patient_doctor"/>
-                <field name="patient_id"/>
+                <field name="create_date"/>
+                <!--                <field name="patient_id"/>-->
             </list>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_patient_kanban">
+        <field name="name">patient</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <kanban create="false">
+                <field name="patient_name"/>
+                <field name="age"/>
+                <field name="address"/>
+                <field name="gender"/>
+                <field name="patient_id"/>
+                <field name="patient_doctor"/>
+                <!--                    <field name="patient_id"/>-->
+
+                <!--                    <field name="last_activity"/>-->
+                <!--                    <field name="is_current"/>-->
+                <templates>
+                    <t t-name="card" class="flex-row">
+                        <div class="d-flex flex-column ms-3">
+                            <div class="d-flex align-items-center">
+                                <field name="patient_name" string="Name" class="fw-bolder"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_patient_search" model="ir.ui.view">
+        <field name="name">patient</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <search>
+
+                <field name="patient_name"/>
+                <!--                    <separator/>-->
+                <!--                    <filter string="My Quotations" name="my_quotation" domain="[('user_id', '=', uid)]"/>-->
+                <!--                    <separator/>-->
+                <!--                <filter string="Quotations" name="qts" domain="[('status', 'in', ('op', 'admit','discharge'))]"/>-->
+                <!--                <filter string="Discharged Patients" name="Discharged" domain="[('status', '=', 'discharge')]"/>-->
+                <!--                <filter string="Admitted Patients" name="admitted" domain="[('status', '=', 'admit')]"/>-->
+                <!--                <separator/>-->
+                <!--                <filter string="Create Date" name="filter_admit_date" date="admit_date"/>-->
+            </search>
         </field>
     </record>
 
     <record id="action_hospital_patient" model="ir.actions.act_window">
         <field name="name">patient</field>
         <field name="res_model">hospital.patient</field>
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">list,kanban,form,search</field>
         <field name="view_id" ref="view_patient_list"/>
     </record>
 
