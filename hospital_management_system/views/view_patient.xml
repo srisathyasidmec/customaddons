@@ -5,10 +5,22 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <form string="patient">
+                <header>
+                    <button name="send_email" string="Send Email" type="object" class="btn-primary"/>
+                    <field name="status" widget="statusbar" statusbar_visible="op,admit,discharge"/>
+                </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button"
+                                name="view_patient_lines"
+                                type="object"
+                                icon="fa-pencil-square-o"
+                                string="patient"/>
+                    </div>
                     <group>
                         <group>
                         <field name="patient_name"/>
+                        <field name="patient_email"/>
                         <field name="age"/>
                         <field name="address"/>
                         <field name="gender"/>
@@ -21,6 +33,9 @@
                             <field name="is_patient_is_discharged"/>
                             <field name="discharge_date" invisible="is_patient_is_discharged == False"/>
                         </group>
+<!--                        <group>-->
+<!--                            <field name="image" widget="image" class="oe_avatar" options="{'preview_image': 'image'}"/>-->
+<!--                        </group>-->
                     </group>
                     <notebook>
                         <page string="order lines">

@@ -9,6 +9,8 @@ class HospitalPatient(models.Model):
     age=fields.Integer(string="Age")
     address=fields.Char(String="Address")
 
+    patient_email = fields.Char(string="Patient Email")
+
     patient_doctor = fields.Many2one(comodel_name="hospital.doctor", domain=[("email", "!=", False)], string="Doctor Name", tracking=True, required=True, )
                                     #comodel_name is used as target model this field connects to
                                     #domain helps in filtering & shows doctors whose mail is present
@@ -61,3 +63,30 @@ class HospitalPatient(models.Model):
         def total_val(self):
             for rec in self:
                 rec.total = rec.qty * rec.unit_price
+
+
+
+
+    #to add image from module
+    # image=fields.Image(string="image")
+
+    def send_email(self):
+        # print("Hello")
+        for rec in self:
+            template = self.env.ref("hospital_management_system.mail_template_patient_confirm")
+            template.send_mail(rec.id, force_send=True)
+
+    #this is field used for status bar purpose
+    status = fields.Selection([("op","OP"),("admit", "Admitted"), ("discharge", "Discharged")], "status", default='op')
+
+    #thsi function used as one smart button action
+    def view_patient_lines(self):
+        self.ensure_one()
+        for rec in self:
+            return {
+                'name': "view patient invoices",
+                'view_mode': 'list',
+                'res_model': 'hospital.patient.line',
+                'domain': [('patient', '=', rec.patient_name)],
+                'type': 'ir.actions.act_window',
+            }
