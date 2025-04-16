@@ -56,7 +56,7 @@ class HospitalPatient(models.Model):
     image_1920=fields.Binary(string="image")
 
     def send_email(self):
-        # print("Hello")
+        # priOnnt("Hello")
         for rec in self:
             template = self.env.ref("hospital_management_system.mail_template_patient_confirm")
             template.send_mail(rec.id, force_send=True)

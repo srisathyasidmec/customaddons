@@ -17,8 +17,8 @@
                                 icon="fa-pencil-square-o"
                                 string="patient"/>
                     </div>
-                    <field name="image_1920" widget="image" class="oe_avatar"
-                           options="{&quot;preview_image&quot;: &quot;avatar_128&quot;}"/>
+                    <field name="image_1920" widget="image" class="oe_avatar"/>
+<!--                      options="{&quot;preview_image&quot;: &quot;avatar_128&quot;}-->
 
                     <group>
                         <group>

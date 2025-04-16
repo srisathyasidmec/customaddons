@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_patient_report_document">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="obj"> <!--#t-as value works as model name -->
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <img t-if="obj.image_1920" t-att-src="image_data_uri(obj.image_1920)"
+                                 style="max-height: 100px;" alt="Logo"/>
+                            <br/>
+                            <p>
+                                <span t-esc="obj.company_id.name"/>
+                            </p>
+                            <p>
+                                <span t-esc="obj.user_id.name"/>
+                            </p>
+                        </div>
+
+                        <div class="col-6 text-right">
+                            <p t-field="obj.patient_name"/>
+                            <p t-field="obj.patient_email"/>
+                            <p t-field="obj.address"/>
+                            <p t-field="obj.gender"/>
+                        </div>
+                    </div>
+
+                    <h2>Invoice</h2>
+                    <div class="page" style="">
+                        <span t-field="obj.patient_name"/>
+                        <span t-field="obj.patient_email"/>
+                        <table class="table table-sm" style="width:100%;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid black;">
+                                    <th>Products</th>
+                                    <th class="text-right">Quantity</th>
+                                    <th class="text-right">Unit Price</th>
+                                    <th class="text-right">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="obj.patient_lines" t-as="lines">
+                                    <tr>
+                                        <td>
+                                            <span t-esc="lines.product_id.name"/>
+                                        </td>
+
+                                        <td class="text-right">
+                                            <span t-esc="lines.qty"/>
+                                        </td>
+
+                                        <td class="text-right"
+                                            t-esc="lines.unit_price"/>
+
+                                        <td class="text-right"
+                                            t-esc="lines.total"/>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3">
+                                        Total
+                                    </td>
+                                    <td>
+                                        <span t-esc="sum(line.total for line in obj.patient_lines)"/>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

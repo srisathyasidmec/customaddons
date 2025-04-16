@@ -4,4 +4,7 @@
     <menuitem id="menu_hospital_patient" name="Patient" action="action_hospital_patient" parent="menu_hospital" sequence="2"/> #menu
     <menuitem id="menu_hospital_doctor" name="Doctor" action="action_hospital_doctor" parent="menu_hospital" sequence="1"/>  #menu
                                                                                                 #sequence helps what menu should come first
+
+    <menuitem id="menu_reporting" name="Reporting" parent="menu_hospital" sequence="3"/>
+    <menuitem id="menu_patient_report" name="Patient pdf Report" parent="menu_reporting" sequence="10" action="action_hospital_patient_wizard"/>
 </odoo>
