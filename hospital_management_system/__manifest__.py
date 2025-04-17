@@ -2,7 +2,7 @@
     "name":"Hospital Management System",
     "author":"Sri Sathya",
     "version":"18.0",
-    "depends":["sale","sale_management","mail"],
+    "depends":["sale","sale_management","mail",],
     "data":[
         "security/ir.model.access.csv",
         "views/view_patient.xml",
@@ -15,5 +15,5 @@
         "report/report.xml",
         "views/menu.xml",
     ],
-   #"application":True,
+    #"application":True,
 }

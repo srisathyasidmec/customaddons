@@ -9,19 +9,21 @@
                             <img t-if="obj.image_1920" t-att-src="image_data_uri(obj.image_1920)"
                                  style="max-height: 100px;" alt="Logo"/>
                             <br/>
-                            <p>
+                            <p style="margin: 0;">
                                 <span t-esc="obj.company_id.name"/>
                             </p>
-                            <p>
+                            <p style="margin: 0;">
                                 <span t-esc="obj.user_id.name"/>
                             </p>
                         </div>
 
                         <div class="col-6 text-right">
-                            <p t-field="obj.patient_name"/>
-                            <p t-field="obj.patient_email"/>
-                            <p t-field="obj.address"/>
-                            <p t-field="obj.gender"/>
+                            <p style="margin: 0;" t-field="obj.patient_name"/>
+                            <p style="margin: 0;" t-field="obj.patient_email"/>
+                            <p style="margin: 0;" t-field="obj.address"/>
+                            <p style="margin: 0;" t-field="obj.gender"/>
+                            <p style="margin: 0;" t-field="obj.patient_doctor.doctor_name"/>
+                            <p style="margin: 0;" t-field="obj.patient_doctor.patient_names"/>
                         </div>
                     </div>
 
