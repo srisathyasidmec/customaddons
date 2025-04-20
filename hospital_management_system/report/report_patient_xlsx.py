@@ -34,8 +34,3 @@ class ReportPatientXlsx(models.AbstractModel):
             sheet.write(row, 8, line.unit_price, format2)
             sheet.write(row, 9, line.total, format2)
             row += 1
-
-            # sheet.write(row, 6,j.product_id.name, format2)
-            # sheet.write(1, 7, l.qty, format2)
-            # sheet.write(1, 8, l.unit_price, format2)
-            # sheet.write(1, 9, l.total, format2)
