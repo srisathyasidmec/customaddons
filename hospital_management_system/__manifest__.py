@@ -4,7 +4,9 @@
     "version":"18.0",
     "depends":["sale","sale_management","mail",],
     "data":[
+        "security/security.xml",
         "security/ir.model.access.csv",
+        "data/ir_sequence.xml",
         "views/view_patient.xml",
         "views/view_doctor.xml",
         "views/view_sale_order.xml",
