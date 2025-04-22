@@ -59,13 +59,13 @@ class HospitalPatient(models.Model):
     patient_lines = fields.One2many("hospital.patient.line", "patient", "Order lines")
     # if we add attribute One2Many then Many2One should also be done
 
-    user_id = fields.Many2one("res.users", "user", compute="compute_user_company")
-    company_id = fields.Many2one("res.company", "Company", compute="compute_user_company")
+    user_id = fields.Many2one("res.users", "user") #, compute="compute_user_company"
+    company_id = fields.Many2one("res.company", "Company")  #, compute="compute_user_company"
 
-    def compute_user_company(self):
-        for rec in self:
-            rec.user_id = self.env.user
-            rec.company_id = self.env.user.company_id.id
+    # def compute_user_company(self):
+    #     for rec in self:
+    #         rec.user_id = self.env.user
+    #         rec.company_id = self.env.user.company_id.id
 
     # to add image from module
     image_1920 = fields.Binary(string="image")
@@ -95,6 +95,8 @@ class HospitalPatient(models.Model):
             # print(today)
 
     def create(self, vals):
+        vals["user_id"] = self.env.user.id
+        vals["company_id"] = self.env.user.company_id.id
         vals["pseq"] = self.env['ir.sequence'].next_by_code('hospital.patient')
         return super(HospitalPatient, self).create(vals)
 

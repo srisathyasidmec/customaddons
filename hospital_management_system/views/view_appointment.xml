@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_appointment_form" model="ir.ui.view">
+        <field name="name">appointment</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <form string="appointment">
+                <header>
+                    <button name="action_send_email" string="Invoice send by Email" type="object" class="btn-primary"/>
+                    <button name="confirm_appointment" string="Confirm" type="object" class="btn-primary"/>
+                    <field name="status" widget="statusbar" statusbar_visible="draft,confirmed"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button"
+                                name="view_appointment"
+                                type="object"
+                                icon="fa-pencil-square-o"
+                                string="Appointment">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">invoices</span>
+                            </div>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="patient_name"/>
+                            <field name="patient_email"/>
+                            <field name="age"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="apdate_time"/>
+                            <field name="company_id"/>
+                            <field name="user_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Fee Structure">
+                            <field name="appointment_lines">
+                                <list editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="unit_price"/>
+                                    <field name="sub_total"/>
+                                </list>
+                                <form>
+                                    <field name="product_id"/>
+                                    <field name="unit_price"/>
+                                    <field name="sub_total"/>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_appointment_list" model="ir.ui.view">
+        <field name="name">appointment</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <list string="patient">
+                <field name="patient_name"/>
+                <field name="patient_email"/>
+                <field name="age"/>
+                <field name="date"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_hospital_appointment" model="ir.actions.act_window">
+        <field name="name">appointment</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_appointment_list"/>
+    </record>
+
+</odoo>

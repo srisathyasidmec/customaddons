@@ -7,4 +7,7 @@
 
     <menuitem id="menu_reporting" name="Reporting" parent="menu_hospital" sequence="3"/>
     <menuitem id="menu_patient_report" name="Patient pdf Report" parent="menu_reporting" sequence="10" action="action_hospital_patient_wizard"/>
+
+    <menuitem id="menu_hospital_appointments" name="Appointments" parent="menu_hospital" sequence="4"/>
+    <menuitem id="menu_hospital_appointment" name="Appointments" parent="menu_hospital_appointments" action="action_hospital_appointment" sequence="10"/>
 </odoo>
