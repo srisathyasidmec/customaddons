@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tasks_shipment,access_tasks_shipment,model_shipment_document,,1,1,1,1
+access_customer_followup,access_customer_followup,model_customer_followup,,1,1,1,1

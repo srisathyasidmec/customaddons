@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_respartner_update" model="ir.ui.view">
+        <field name="name">customer form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="gst_value"/>
+                <field name="dob"/>
+                <field name="age"/>
+            </xpath>
+            <xpath expr="//field[@name='company_type']" position="before">
+                <h1>
+                    <field name="customer_code"/>
+                </h1>
+            </xpath>
+        </field>
+    </record>
+</odoo>

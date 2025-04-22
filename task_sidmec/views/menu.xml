@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="menu_tasks" name="Sidmec Task"/>
+    <menuitem id="menu_shipment" name="Shipment" action="action_shipment_doc" parent="menu_tasks"/>
+    <menuitem id="menu_customers" name="Customer" parent="menu_tasks"/>
+    <menuitem id="menu_customer" name="Customer FollowUp" action="action_customer_followup" parent="menu_customers"/>
+</odoo>

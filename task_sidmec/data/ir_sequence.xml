@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="seq_customer_code" model="ir.sequence">
+            <field name="name">Customer Code</field>
+            <field name="code">res.partner</field>
+            <field name="prefix">CUST/%(year)s/</field>
+            <field name="padding">4</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="implementation">no_gap</field>
+            <field name="active">True</field>
+        </record>
+
+         <record id="seq_shipment_code" model="ir.sequence">
+            <field name="name">Shipment Doc</field>
+            <field name="code">shipment.document</field>
+            <field name="prefix">DOC/%(year)s/</field>
+            <field name="padding">4</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="implementation">no_gap</field>
+            <field name="active">True</field>
+        </record>
+</odoo>
+
