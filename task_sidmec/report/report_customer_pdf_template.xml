@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_customer_report_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="obj"> <!--#t-as value works as model name -->
+                <span t-esc="obj.company_id.name"/>
+                <br/>
+                <span t-esc="obj.user_id.name"/>
+
+                <div class="col-6 text-right">
+                    <p style="margin: 0;" t-field="obj.name"/>
+                    <p style="margin: 0;" t-field="obj.email"/>
+                    <p style="margin: 0;" t-field="obj.dob"/>
+                </div>
+
+                <h2>Invoice</h2>
+                <div class="page" style="">
+                    <span t-field="obj.name"/>
+                    <br/>
+                    <span t-field="obj.email"/>
+                </div>
+
+            </t>
+        </t>
+    </template>
+</odoo>

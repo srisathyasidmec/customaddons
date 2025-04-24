@@ -1,0 +1,27 @@
+<!-- my_module/views/report_template.xml -->
+<odoo>
+    <template id="report_customer_landscape_document">
+        <t t-call="web.html_container">
+            <t t-set="orientation" t-value="'landscape'"/>
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2>My Landscape Report</h2>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Header 1</th>
+                                <th>Header 2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="docs" t-as="doc">
+                                <td><t t-esc="doc.name"/></td>
+                                <td><t t-esc="doc.dob"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

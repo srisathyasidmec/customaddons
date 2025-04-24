@@ -1,7 +1,9 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 from datetime import date
+from odoo.osv import expression
 import re
+
 
 class ResPartner(models.Model):
     _inherit = "res.partner"
@@ -25,16 +27,29 @@ class ResPartner(models.Model):
 
     @api.depends('dob')
     def _compute_age(self):
-            today = date.today()
-            for rec in self:
-                if rec.dob:
-                    born = rec.dob
-                    ages = today.year - born.year - ((today.month, today.day) < (born.month, born.day))
-                    rec.age = ages
-                else:
-                    rec.age = 0
+        today = date.today()
+        for rec in self:
+            if rec.dob:
+                born = rec.dob
+                ages = today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+                rec.age = ages
+            else:
+                rec.age = 0
 
     @api.model
     def create(self, vals):
         vals["customer_code"] = self.env['ir.sequence'].next_by_code('res.partner')
         return super(ResPartner, self).create(vals)
+
+    @api.onchange('country_id')
+    def _onchange_country_id(self):
+        if self.country_id and self.state_id:
+            self.state_id = False  # Reset state
+            return {
+                'warning': {
+                    'title': "State Name Reset",
+                    'message': "Changing the country will reset the state selection.",
+                    'type': 'notification',
+                }
+            }
+

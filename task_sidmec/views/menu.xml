@@ -4,4 +4,11 @@
     <menuitem id="menu_shipment" name="Shipment" action="action_shipment_doc" parent="menu_tasks"/>
     <menuitem id="menu_customers" name="Customer" parent="menu_tasks"/>
     <menuitem id="menu_customer" name="Customer FollowUp" action="action_customer_followup" parent="menu_customers"/>
+
+    <menuitem id="menu_customer_details" name="Details of Customer" action="action_customer_details" parent="menu_tasks"/>
+
+    <menuitem id="menu_wizard" name="Wizard View" parent="menu_tasks"/>
+    <menuitem id="menu_customer_invoices_wizard" name="Customer Wizard" action="action_customer_wizard" parent="menu_wizard"/>
+
+    <menuitem id="menu_tasks_credit_note" name="Credit Notes" action="action_my_customer_credit_note" parent="menu_tasks" />
 </odoo>
