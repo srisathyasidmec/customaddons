@@ -14,9 +14,12 @@
         "views/view_invoices.xml",
         "data/customer_confirm_mail.xml",
         "wizard/customer_invoices_wizard.xml",
+        "wizard/sale_order_wizard.xml",
         "report/report_customer_pdf_template.xml",
         "report/report_customer_landscape.xml",
+        "report/salesperson_pdf_fromtodates_template.xml",
         "report/report.xml",
+        "report/wizard_reports.xml",
         "views/menu.xml",
     ],
 }
