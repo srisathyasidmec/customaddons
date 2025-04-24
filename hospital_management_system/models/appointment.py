@@ -31,6 +31,7 @@ class HospitalAppointment(models.Model):
         for rec in self:
             rec.status = 'confirmed'
 
+
     def action_send_email(self):
         template = self.env.ref("hospital_management_system.mail_template_demo_patient_invoice")
         for rec in self:
@@ -46,7 +47,7 @@ class HospitalAppointment(models.Model):
             return {
                 'name': "view patient",
                 'view_mode': 'list',
-                'res_model': 'hospital.appointment',
+                'res_model': 'hospital.patient',
                 # 'domain': [('patient', '=', rec.patient_name)],
                 'type': 'ir.actions.act_window',
             }
