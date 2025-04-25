@@ -1,25 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="report_salepersons_report_document">
-        <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="obj"> <!--#t-as value works as model name -->
-                <span t-esc="obj.partner_id.name"/>
-                <br/>
-                <span t-esc="obj.user_id.name"/>
+         <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h1>Sale Report</h1>
 
-                <div class="col-6 text-right">
-                    <p style="margin: 0;" t-field="obj.name"/>
-                    <p style="margin: 0;" t-field="obj.email"/>
-                    <p style="margin: 0;" t-field="obj.dob"/>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Customer
+                                </th>
+                                <th>
+                                    From Date
+                                </th>
+                                <th>
+                                    To Date
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h2>
+                                        <span t-esc="wizard.get('partner_name')"/>
+                                    </h2>
+                                </td>
+                                <td>
+                                    <span t-esc="wizard.get('from_date')"/>
+                                </td>
+                                <td>
+                                    <span t-esc="wizard.get('to_date')"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-sm table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Reference</th>
+                                <th>Sales Person</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="sale_orders" t-as="order">
+                                <tr>
+                                    <td>
+                                        <span t-esc="order.get('name')"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="order.get('sales_person')"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="order.get('amount_total')"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2">
+                                    <span>Total Amount</span>
+                                </td>
+
+                                <td>
+                                    <span t-esc="wizard.get('total_amount')"/>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
-
-                <h2>Invoice</h2>
-                <div class="page" style="">
-                    <span t-field="obj.name"/>
-                    <br/>
-                    <span t-field="obj.email"/>
-                </div>
-
             </t>
         </t>
     </template>
