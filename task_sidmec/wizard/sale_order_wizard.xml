@@ -7,7 +7,8 @@
             <form string="customer">
                 <group string="salesman report">
                     <group>
-                        <field name="salesperson"/>
+<!--                        <field name="salesperson"/>-->
+                        <field name="users"/>
                         <field name="from_date"/>
                         <field name="to_date"/>
                     </group>

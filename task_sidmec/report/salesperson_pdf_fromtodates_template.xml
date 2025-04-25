@@ -10,7 +10,7 @@
                         <thead>
                             <tr>
                                 <th>
-                                    Customer
+                                    Sales Person
                                 </th>
                                 <th>
                                     From Date
@@ -41,7 +41,7 @@
                         <thead>
                             <tr>
                                 <th>Reference</th>
-                                <th>Sales Person</th>
+                                <th>Customer</th>
                                 <th>Amount</th>
                             </tr>
                         </thead>
