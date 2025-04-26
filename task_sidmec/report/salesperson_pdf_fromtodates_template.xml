@@ -1,79 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
+    <template id="report_salesperson_layout" inherit_id="web.external_layout_standard">
+        <!-- Header -->
+        <xpath expr="//div[@t-attf-class='header o_company_#{company.id}_layout']" position="replace">
+            <div class="header">
+                <h1>Hello</h1>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[contains(@t-attf-class, 'footer')]" position="replace">
+            <div class="footer">
+                <div class="text-center">
+                    <div style="border-top: 1px solid black; padding-top: 5px;">
+                        Page:
+                        <span class="page"/>
+                        /
+                        <span class="topage"/>
+                        -
+                    </div>
+                </div>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[contains(@t-attf-class, 'article')]" position="replace">
+            <main class="o_report_layout_standard">
+<!--                <t t-raw="0"/>-->
+                    <div>Hello from custom layout</div>
+
+            </main>
+        </xpath>
+
+    </template>
+
     <template id="report_salepersons_report_document">
-         <t t-call="web.html_container">
-            <t t-call="web.external_layout">
-                <div class="page">
-                    <h1>Sale Report</h1>
+        <t t-call="web.html_container">
+<!--            <t t-call="web.external_layout">-->
+                <t t-call="task_sidmec.report_salesperson_layout">
+                    <div class="page">
+                        <h1>Sale Report</h1>
 
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>
-                                    Sales Person
-                                </th>
-                                <th>
-                                    From Date
-                                </th>
-                                <th>
-                                    To Date
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <h2>
-                                        <span t-esc="wizard.get('partner_name')"/>
-                                    </h2>
-                                </td>
-                                <td>
-                                    <span t-esc="wizard.get('from_date')"/>
-                                </td>
-                                <td>
-                                    <span t-esc="wizard.get('to_date')"/>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <table class="table table-sm table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Reference</th>
-                                <th>Customer</th>
-                                <th>Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <t t-foreach="sale_orders" t-as="order">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Sales Person
+                                    </th>
+                                    <th>
+                                        From Date
+                                    </th>
+                                    <th>
+                                        To Date
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
                                 <tr>
                                     <td>
-                                        <span t-esc="order.get('name')"/>
+                                        <h2>
+                                            <span t-esc="wizard.get('partner_name')"/>
+                                        </h2>
                                     </td>
                                     <td>
-                                        <span t-esc="order.get('sales_person')"/>
+                                        <span t-esc="wizard.get('from_date')"/>
                                     </td>
                                     <td>
-                                        <span t-esc="order.get('amount_total')"/>
+                                        <span t-esc="wizard.get('to_date')"/>
                                     </td>
                                 </tr>
-                            </t>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="2">
-                                    <span>Total Amount</span>
-                                </td>
+                            </tbody>
+                        </table>
 
-                                <td>
-                                    <span t-esc="wizard.get('total_amount')"/>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </t>
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>Customer</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="sale_orders" t-as="order">
+                                    <tr>
+                                        <td>
+                                            <span t-esc="order.get('name')"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="order.get('customer_name')"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="order.get('amount_total')"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">
+                                        <span>Total Amount</span>
+                                    </td>
+
+                                    <td>
+                                        <span t-esc="wizard.get('total_amount')"/>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </t>
+<!--            </t>-->
         </t>
     </template>
 </odoo>

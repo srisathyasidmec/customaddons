@@ -27,7 +27,7 @@ class CustomerReport(models.TransientModel):
                     {
                         'name': order.name,
                         'amount_total': order.amount_total,
-                        'sales_person': order.partner_id.name,
+                        'customer_name': order.partner_id.name,
                     }
                     for order in sale_orders
                 ],
