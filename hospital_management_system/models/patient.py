@@ -16,6 +16,8 @@ class HospitalPatient(models.Model):
 
     patient_email = fields.Char(string="Patient Email")
 
+    appointment_id = fields.Many2one('hospital.patient.appointments', string="Appointment")
+
     @api.constrains('patient_email')
     def _check_email(self):
         for record in self:
@@ -29,13 +31,13 @@ class HospitalPatient(models.Model):
                 #raise ValidationError("Email must end with @gmail.com")
 
     patient_doctor = fields.Many2one(comodel_name="hospital.doctor", domain=[("email", "!=", False)],
-                                     string="Doctor Name", tracking=True, required=True, )
+                                     string="Doctor Name", tracking=True, )  #required=True,
     # comodel_name is used as target model this field connects to
     # domain helps in filtering & shows doctors whose mail is present
 
     doctor_mail = fields.Char(related="patient_doctor.email", string="Doctor email")  # compute="compute_doctor_email"
 
-    patient_id = fields.Many2one(comodel_name="res.partner", string="PId from Partner", tracking=True, required=True, )
+    patient_id = fields.Many2one(comodel_name="res.partner", string="PId from Partner", tracking=True, ) #required=True,
 
     gender = fields.Selection([("male", "Male"), ("female", "Female")], "Gender")
     # left value stores in Db and right value shows in Odoo UI

@@ -8,6 +8,9 @@
                 <header>
                     <button name="action_send_email" string="Invoice send by Email" type="object" class="btn-primary"/>
                     <button name="confirm_appointment" string="Confirm" type="object" class="btn-primary"/>
+                    <button name="action_reset_to_draft" string="reset to draft "
+                            type="object" data-hotkey="w"
+                            invisible="status == 'draft'"/>
                     <field name="status" widget="statusbar" statusbar_visible="draft,confirmed"/>
                 </header>
                 <sheet>
@@ -24,7 +27,7 @@
                     </div>
                     <group>
                         <group>
-                            <field name="patient_name"/>
+                            <field name="patient_id"/>
                             <field name="patient_email"/>
                             <field name="age"/>
                             <field name="date"/>
@@ -40,11 +43,13 @@
                             <field name="appointment_lines">
                                 <list editable="bottom">
                                     <field name="product_id"/>
+                                    <field name="qty"/>
                                     <field name="unit_price"/>
                                     <field name="sub_total"/>
                                 </list>
                                 <form>
                                     <field name="product_id"/>
+                                    <field name="qty"/>
                                     <field name="unit_price"/>
                                     <field name="sub_total"/>
                                 </form>
@@ -62,7 +67,7 @@
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
             <list string="patient">
-                <field name="patient_name"/>
+                <field name="patient_id"/>
                 <field name="patient_email"/>
                 <field name="age"/>
                 <field name="date"/>
