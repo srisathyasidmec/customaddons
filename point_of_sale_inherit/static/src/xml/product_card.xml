@@ -3,8 +3,9 @@
     <t t-name="sdm_pos_customization.ProductCard" t-inherit="point_of_sale.ProductCard" t-inherit-mode="extension">
         <xpath expr="//div[hasclass('product-img')]" position="after">
             <div t-esc="props.barcode"/>
-            <div t-esc="props.lst_price"/>
-<!--            <td t-out="saleprice"/>-->
+        </xpath>
+        <xpath expr="//div[hasclass('product-name')]" position="before">
+            <h6>price:<span t-esc="props.lst_price"/></h6>
         </xpath>
     </t>
 </templates>

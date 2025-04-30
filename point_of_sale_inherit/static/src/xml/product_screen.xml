@@ -2,8 +2,11 @@
 <templates id="template" xml:space="preserve">
     <t t-name="sdm_pos_customization.ProductScreen" t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension">
         <xpath expr="//ProductCard" position="attributes">
-            <attribute name="barcode">product.barcode</attribute>
+            <attribute name="barcode">product.barcode or ""</attribute>
             <attribute name="lst_price">product.lst_price</attribute>
         </xpath>
+<!--         <xpath expr="//ProductCard" position="attributes">-->
+<!--            <attribute name="barcode">product.barcode</attribute>-->
+<!--        </xpath>-->
     </t>
 </templates>
