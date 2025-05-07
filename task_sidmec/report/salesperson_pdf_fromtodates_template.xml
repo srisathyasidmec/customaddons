@@ -1,42 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <template id="report_salesperson_layout" inherit_id="web.external_layout_standard">
-        <!-- Header -->
-        <xpath expr="//div[@t-attf-class='header o_company_#{company.id}_layout']" position="replace">
-            <div class="header">
-                <h1>Hello</h1>
-            </div>
-        </xpath>
+<!--    <template id="report_salesperson_layout" inherit_id="web.external_layout_standard">-->
+<!--        &lt;!&ndash; Header &ndash;&gt;-->
+<!--        <xpath expr="//div[@t-attf-class='header o_company_#{company.id}_layout']" position="replace">-->
+<!--            <div class="header">-->
+<!--                <h1>Hello</h1>-->
+<!--            </div>-->
+<!--        </xpath>-->
 
-        <xpath expr="//div[contains(@t-attf-class, 'footer')]" position="replace">
-            <div class="footer">
-                <div class="text-center">
-                    <div style="border-top: 1px solid black; padding-top: 5px;">
-                        Page:
-                        <span class="page"/>
-                        /
-                        <span class="topage"/>
-                        -
-                    </div>
-                </div>
-            </div>
-        </xpath>
+<!--        <xpath expr="//div[contains(@t-attf-class, 'footer')]" position="replace">-->
+<!--            <div class="footer">-->
+<!--                <div class="text-center">-->
+<!--                    <div style="border-top: 1px solid black; padding-top: 5px;">-->
+<!--                        Page:-->
+<!--                        <span class="page"/>-->
+<!--                        /-->
+<!--                        <span class="topage"/>-->
+<!--                        - -->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </xpath>-->
 
-        <xpath expr="//div[contains(@t-attf-class, 'article')]" position="replace">
-            <main class="o_report_layout_standard">
+<!--        <xpath expr="//div[contains(@t-attf-class, 'article')]" position="replace">-->
+<!--            <main class="o_report_layout_standard">-->
+<!--&lt;!&ndash;                <t t-raw="0"/>&ndash;&gt;-->
+<!--                    <div>Hello from custom layout</div>-->
+
+<!--            </main>-->
+<!--        </xpath>-->
+
+<!--    </template>-->
+<!--    <template id="report_salesperson_layout" inherit_id="web.external_layout_standard">-->
+<!--        <xpath expr="//div[@t-attf-class='header o_company_#{company.id}_layout']" position="replace">-->
+<!--            <div class="header" style="margin-right: 30px;">-->
+<!--                <h1>HELLO</h1>-->
+<!--            </div>-->
+<!--        </xpath>-->
+
+<!--        <xpath expr="//div[contains(@t-attf-class, 'footer')]" position="replace">-->
+<!--            <div class="footer">-->
+<!--                <div class="text-center">-->
+<!--                    <div style="border-top: 1px solid black; padding-top: 5px;">-->
+<!--                        Page:-->
+<!--                        <span class="page"/>-->
+<!--                        /-->
+<!--                        <span class="topage"/>-->
+<!--                        - -->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </xpath>-->
+
+<!--        <xpath expr="//div[contains(@t-attf-class,'article')]" position="replace">-->
+<!--            <main class="o_report_layout_standard">-->
 <!--                <t t-raw="0"/>-->
-                    <div>Hello from custom layout</div>
-
-            </main>
-        </xpath>
-
-    </template>
+<!--            </main>-->
+<!--        </xpath>-->
+<!--    </template>-->
 
     <template id="report_salepersons_report_document">
         <t t-call="web.html_container">
-<!--            <t t-call="web.external_layout">-->
-                <t t-call="task_sidmec.report_salesperson_layout">
+            <t t-call="web.external_layout">
+<!--                <t t-call="task_sidmec.report_salesperson_layout">-->
                     <div class="page">
                         <h1>Sale Report</h1>
 

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
-    <t t-name="sdm_pos_customization.ProductCard" t-inherit="point_of_sale.ProductCard" t-inherit-mode="extension">
+    <t t-name="point_of_sale_inherit.ProductCard" t-inherit="point_of_sale.ProductCard" t-inherit-mode="extension">
         <xpath expr="//div[hasclass('product-img')]" position="after">
             <div t-esc="props.barcode"/>
-        </xpath>
-        <xpath expr="//div[hasclass('product-name')]" position="before">
-            <h6>price:<span t-esc="props.lst_price"/></h6>
+            <h6>Price :<span t-esc="props.lst_price"/></h6>
         </xpath>
     </t>
 </templates>

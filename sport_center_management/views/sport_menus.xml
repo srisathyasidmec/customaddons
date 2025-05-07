@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="menu_sport_center" name="Sport Center Management"/>  #main menu
+    <menuitem id="menu_dashboard" name="Dashboard" action="" parent="menu_sport_center" sequence="1"/>
+<!--    groups="sport_center_management.group_" -->
+
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="point_of_sale_inherit.ControlButtons" t-inherit="point_of_sale.ControlButtons" t-inherit-mode="extension">
+        <xpath expr="//OrderlineNoteButton[@label]" position="after">
+            <button class="more-btn btn btn-light btn-lg flex-shrink-0" t-if="!props.showRemainingButtons" t-att-class="newdialog" t-on-click="() => this.onClickDialog()">
+                Dialog/Order
+            </button>
+        </xpath>
+    </t>
+</templates>
